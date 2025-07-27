@@ -1,5 +1,8 @@
 package com.example.dto;
 
+
+import com.example.entity.Category;
+
 import lombok.*;
 
 @Data
@@ -14,4 +17,5 @@ public class ProductResponse {
 	private Double price;
 	private String description;
 	private Integer stock;
+	private Category category;
 }
