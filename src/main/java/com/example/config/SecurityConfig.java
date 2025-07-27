@@ -14,10 +14,10 @@ public class SecurityConfig {
         http
             .csrf().disable() // ✅ disable CSRF for POST JSON
             .authorizeHttpRequests(auth -> auth
-            		 .requestMatchers(HttpMethod.GET, "/api/orders/**").permitAll()
-                     .requestMatchers(HttpMethod.POST, "/api/orders/**").authenticated()
-                     .requestMatchers(HttpMethod.PUT, "/api/orders/**").authenticated()
-                     .requestMatchers(HttpMethod.DELETE, "/api/orders/**").authenticated()
+            		 .requestMatchers(HttpMethod.GET, "/api/**").permitAll()
+                     .requestMatchers(HttpMethod.POST, "/api/**").authenticated()
+                     .requestMatchers(HttpMethod.PUT, "/api/**").authenticated()
+                     .requestMatchers(HttpMethod.DELETE, "/api/**").authenticated()
                      .anyRequest().permitAll() // allow others like GET without auth
             )
             .httpBasic(); // enable Basic Auth
