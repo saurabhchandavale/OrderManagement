@@ -1,0 +1,52 @@
+JwtService -> Token Generation, Validation, extract username
+
+SecurityConfig -> set up spring security with JWT
+
+JwtFilter -> every incoming request passes from here before controller
+Reads Authorization: Bearer <token> header
+Extracts username via JwtService
+Loads user from DB (UserDetailsServiceImpl)
+If token is valid → set user in SecurityContextHolder (Spring’s memory of who is logged in)
+
+User registers or logs in → you return a JWT.
+Client sends JWT in Authorization header.
+JwtFilter intercepts request → validates token → authenticates user.
+If valid → request proceeds to controller. If not → rejected with 403 Forbidden.
+
+
+1. Request Entry Point
+Whenever a request hits a Spring Boot application, it doesn’t directly go to the controller. Instead, it first passes through a chain of filters managed by Spring Security.
+
+2. Filter Chain
+Spring Security uses the Servlet Filter Chain to apply security.
+Each filter has a specific responsibility, for example:
+
+UsernamePasswordAuthenticationFilter → handles login form or login API
+
+JwtFilter (custom) → validates JWT token
+
+ExceptionTranslationFilter → handles authentication/authorization errors
+
+SecurityContextPersistenceFilter → manages the security context for each request
+
+3. Authentication (Who are you?)
+
+When you log in (e.g., via /auth/login), Spring Security checks your credentials (username + password).
+
+If valid → it creates an Authentication object and stores it in the SecurityContextHolder.
+
+In JWT-based apps, we don’t store sessions. Instead, we generate a JWT token and return it to the client.
+
+
+4. Authorization (What are you allowed to do?)
+
+When a new request comes with Authorization: Bearer <JWT>,
+
+Your JwtFilter extracts the token, validates it, and loads the user details.
+
+It sets the user into SecurityContextHolder.
+
+Then, Spring Security checks rules defined in SecurityConfig:
+
+5. Controller Execution
+Only after authentication & authorization succeed does the request reach your controller method.
