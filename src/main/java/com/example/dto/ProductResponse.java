@@ -18,3 +18,4 @@ public class ProductResponse {
 	private Integer stock;
 	private Category category;
 }
+

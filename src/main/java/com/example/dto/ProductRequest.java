@@ -29,3 +29,4 @@ public class ProductRequest {
 	@NotNull(message = "Category is required")
 	private CategoryRequest category;
 }
+
