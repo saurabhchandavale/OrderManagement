@@ -1,6 +1,5 @@
 package com.example.entity;
 
-
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -13,23 +12,23 @@ import lombok.*;
 @Getter
 @Setter
 public class Product {
+	
+	
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    private String name;
+	private String name;
 
-    private Double price;
+	private Double price;
 
-    private String description;
+	private String description;
 
-    private Integer stock;
-    
+	private Integer stock;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "category_id", nullable = false)
-    private Category category;
-
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "category_id", nullable = false)
+	private Category category;
 
 }

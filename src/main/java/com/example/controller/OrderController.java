@@ -79,10 +79,10 @@ public class OrderController {
 				.quantity(order.getQuantity()).status(order.getStatus()).createdAt(order.getCreatedAt())
 				.updatedAt(order.getUpdatedAt()).build();
 	}
-	
+
 	@GetMapping("/test")
 	public ResponseEntity<String> testSwagger() {
-	    return ResponseEntity.ok("Swagger works!");
+		return ResponseEntity.ok("Swagger works!");
 	}
 
 }

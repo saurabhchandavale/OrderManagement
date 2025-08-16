@@ -1,6 +1,5 @@
 package com.example.entity;
 
-
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -18,16 +17,16 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Setter
 public class Category {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    private String name;
+	private String name;
 
-    private String description;
+	private String description;
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private List<Product> products;
+	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+	@JsonIgnore
+	private List<Product> products;
 
 }

@@ -11,6 +11,7 @@ import com.example.dto.CategoryResponse;
 import com.example.entity.Category;
 import com.example.exception.ResourceNotFoundException;
 import com.example.reporitory.CategoryRepository;
+
 @Service
 public class CategoryServiceImpl implements CategoryService {
 	@Autowired
@@ -39,13 +40,15 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	public CategoryResponse getCategoryById(Long id) {
-		Category category = categoryRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Category Not found with Id " + id));
+		Category category = categoryRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Category Not found with Id " + id));
 		return toResponse(category);
 	}
 
 	@Override
 	public void deleteCategory(Long id) {
-		Category category = categoryRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Category Not found with Id " + id));
+		Category category = categoryRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Category Not found with Id " + id));
 		categoryRepository.delete(category);
 	}
 

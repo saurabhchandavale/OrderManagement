@@ -11,11 +11,11 @@ import java.time.LocalDateTime;
 @Setter
 public class OrderResponse {
 
-    private Long id;
-    private Long productId;
-    private Long userId;
-    private Integer quantity;
-    private String status;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+	private Long id;
+	private Long productId;
+	private Long userId;
+	private Integer quantity;
+	private String status;
+	private LocalDateTime createdAt;
+	private LocalDateTime updatedAt;
 }
