@@ -25,3 +25,4 @@ public class OrderRequest {
 	@NotBlank(message = "status must not be blank")
 	private String status;
 }
+
